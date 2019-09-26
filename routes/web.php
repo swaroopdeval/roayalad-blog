@@ -17,10 +17,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::resource('pages', 'PageListController');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('table-list', function () {
-		return view('pages.table_list');
+		return view('pages.index');
 	})->name('table');
 
 	Route::get('typography', function () {

@@ -42,21 +42,23 @@
                   </th>
                 </thead>
                 <tbody>
+                  @foreach ($pages as $page)
+                  
                   <tr>
                       <td>
-                        6
+                        {{$page->id}}
                       </td>
                       <td>
-                        Mason Porter
+                        {{$page->pagetitle}}
                       </td>
                       <td>
-                        2000
+                        {{$page->articlelist}}
                       </td>
                       <td>
-                          <button type="button" class="btn btn-success">Add tag</button>
+                         {{{$contact->tags}}}
                       </td>
                       <td class="text-primary">
-                        Active
+                        {{$page->status}}
                       </td>
                       <td class="td-actions">
                        
@@ -72,10 +74,11 @@
                           </form>
                       </td>
                       <td>
-                          <button type="button" class="btn btn-success">Add data</button>
+                          {{$page->prebid}}
                       </td>
           
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
