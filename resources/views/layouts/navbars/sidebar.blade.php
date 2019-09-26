@@ -41,12 +41,26 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('table') }}">
-          <i class="material-icons">content_paste</i>
-            <p>{{ __('Page List') }}</p>
-        </a>
-      </li>
+
+      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+          <a class="nav-link" data-toggle="collapse" href="#pageslist" aria-expanded="true">
+            <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
+            <p>{{ __('Pages Settings') }}
+              <b class="caret"></b>
+            </p>
+          </a>
+          <div class="collapse show" id="pageslist">
+            <ul class="nav">
+              <li class="nav-item {{ $activePage == 'table' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('pages.index') }}">
+                  <span class="sidebar-mini"> APL </span>
+                  <span class="sidebar-normal">{{ __('All Pages List') }} </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+   
     </ul>
   </div>
 </div>

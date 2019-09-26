@@ -15,6 +15,14 @@
               <a href="{{ route('pages.create') }}" class="btn btn-sm btn-primary">Add page</a>
             </div>
           </div>
+          <div class="col-sm-12">
+
+                @if(session()->get('success'))
+                  <div class="alert alert-success">
+                    {{ session()->get('success') }}  
+                  </div>
+                @endif
+              </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
@@ -55,23 +63,26 @@
                         {{$page->articlelist}}
                       </td>
                       <td>
-                         {{{$contact->tags}}}
+                         {{{$page->tags}}}
                       </td>
                       <td class="text-primary">
                         {{$page->status}}
                       </td>
                       <td class="td-actions">
-                       
-                          <form action="" method="post">
-                              <a rel="tooltip" class="btn btn-success btn-link" href="" data-original-title="" title="">
-                                <i class="material-icons">edit</i>
-                                <div class="ripple-container"></div>
-                              </a>
-                              <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
-                                  <i class="material-icons">close</i>
-                                  <div class="ripple-container"></div>
-                              </button>
-                          </form>
+                            <form action="{{ route('pages.destroy', $page->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                
+                                    <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('pages.edit', $page->id) }}" data-original-title="" title="">
+                                      <i class="material-icons">edit</i>
+                                      <div class="ripple-container"></div>
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                        <i class="material-icons">close</i>
+                                        <div class="ripple-container"></div>
+                                    </button>
+                                </form> 
+                      
                       </td>
                       <td>
                           {{$page->prebid}}

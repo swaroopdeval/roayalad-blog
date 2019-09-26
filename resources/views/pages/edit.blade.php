@@ -5,13 +5,13 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('pages.store') }}" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{ route('pages.update', $pages->id) }}" class="form-horizontal">
             @csrf
-            @method('post')
+            @method('PATCH') 
 
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Add Page Details') }}</h4>
+                <h4 class="card-title">{{ __('Edit Page Details') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body ">
@@ -25,7 +25,7 @@
                   <div class="col-sm-7">
                         <div class="form-group">    
                     
-                                <input type="text" class="form-control" name="pagetitle"/>
+                        <input type="text" class="form-control" name="pagetitle" value="{{$pages->pagetitle}}"/>
                         </div>
                   </div>
                 </div>
@@ -35,7 +35,7 @@
                         <div class="col-sm-7">
                                 <div class="form-group">    
         
-                                        <input type="text" class="form-control" name="articlelist"/>
+                                        <input type="text" class="form-control" name="articlelist" value="{{$pages->articlelist}}"/>
                                     </div>
                         </div>
                 </div>
@@ -46,7 +46,7 @@
                         <div class="col-sm-7">
                                 <div class="form-group">    
 
-                                        <input type="text" class="form-control" name="tags"/>
+                                        <input type="text" class="form-control" name="tags" value="{{$pages->tags}}"/>
                                     </div>
                         </div>
                 </div>
@@ -56,7 +56,7 @@
                         <label class="col-sm-2 col-form-label">{{ __('Status') }}</label>
                         <div class="col-sm-7">
                           <div class="form-group">
-                                <select id="inputState" class="form-control" name="status">
+                                <select id="inputState" class="form-control" name="status" value="{{$pages->status}}">
                                    <option selected>Choose</option>
                                     <option>Active</option>
                                     <option>NotActive</option>
@@ -69,14 +69,14 @@
                         <label class="col-sm-2 col-form-label">{{ __('Prebid') }}</label>
                         <div class="col-sm-7">
                                 <div class="form-group">    
-                                        <input type="text" class="form-control" name="prebid"/>
+                                        <input type="text" class="form-control" name="prebid" value="{{$pages->prebid}}"/>
                                 </div>
                         </div>
                 </div>
             
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Add UPage') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
               </div>
             </div>
           </form>

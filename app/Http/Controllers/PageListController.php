@@ -15,12 +15,10 @@ class PageListController extends Controller
      */
     public function index()
     {
-        
-        $pages = PagesList::all();
+        $pages = PageList::all();
+
         // return view('pages.index', compact('pages'));
-        //return view('pages.index',['pages' => $pages]);
-        return view('pages.index')->with(compact('pages'));
-        // return view('pages.index', ['pages' =>  $pages]);
+        return view('pages.index',['pages' => $pages]);
     }
 
     /**
@@ -42,6 +40,7 @@ class PageListController extends Controller
     
     public function store(Request $request)
     {
+
         $pages =new PageList([
             'pagetitle' => $request->get('pagetitle'),
             'articlelist' => $request->get('articlelist'),
@@ -49,7 +48,18 @@ class PageListController extends Controller
             'status' => $request->get('status'),
             'prebid' => $request->get('prebid'),
         ]);
+        // dd($pages);
+        dd($request->get('tags'));
         $pages->save();
+
+        $tags =explode(',', $request->tags);
+        // dd($tags);
+  
+        $pages->tag($tags);
+        // var_dump($tags =explode(',', $request->tags));
+        $pages->save();
+        
+
         return redirect('/pages')->with('success', 'data saved!');
     }
 
@@ -72,7 +82,8 @@ class PageListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pages = PageList::find($id);
+        return view('pages.edit', compact('pages')); 
     }
 
     /**
@@ -84,7 +95,15 @@ class PageListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pages = PageList::find($id);
+        $pages->pagetitle =  $request->get('pagetitle');
+        $pages->articlelist = $request->get('articlelist');
+        $pages->tags = $request->get('tags');
+        $pages->status = $request->get('status');
+        $pages->prebid= $request->get('prebid');
+        $pages->save();
+
+        return redirect('/pages')->with('success', 'pages updated!');
     }
 
     /**
@@ -95,6 +114,9 @@ class PageListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pages = PageList::find($id);
+        $pages->delete();
+
+        return redirect('/pages')->with('success', 'Page  deleted!');
     }
 }
