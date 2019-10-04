@@ -46,8 +46,57 @@
                         <div class="col-sm-7">
                                 <div class="form-group">    
 
-                                        <input type="text" class="form-control" name="tags"/>
-                                    </div>
+                                    {{-- <input type="text" class="form-control" name="articlelist"/> --}}
+                                <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+
+                                    @foreach ($tags as $tag)
+
+                                  <option value="{{ $tag->id }}">{{$tag->name}}</option>
+                                  
+                                  @endforeach
+                                </select>
+
+
+                                      <!-- Button trigger modal -->
+                                {{-- <button  type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                      {{ __('Add tags') }}
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add tags</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                           
+                                              <form method="post" action="{{ route('tags.store') }}" autocomplete="off" class="form-horizontal">
+                                                  @csrf
+                                                  @method('post')
+                                              <div class="form-group">
+                                                  <small class="form-hint">Push enter or click button for each one</small>
+                                                  <input class="form-control" id="tags" type="text" placeholder="Tag name" name="name" data-tags=" ecommerce  ">
+                                                  <button type="submit" id="addTag" class="btn btn-primary addTag">Add tag</button>
+                                              </div>
+                                              </form>
+                                              <div class="page_tags"><span class="page_tag"><span> ecommerce  </span>
+                                                <button type="button" data-name=" ecommerce  " data-remove="tag">
+                                                  <span class="fa fa-times icon"></span></button>
+                                                </span>
+                                              </div>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div> --}}
+                              </div>
                         </div>
                 </div>
 
@@ -69,7 +118,34 @@
                         <label class="col-sm-2 col-form-label">{{ __('Prebid') }}</label>
                         <div class="col-sm-7">
                                 <div class="form-group">    
-                                        <input type="text" class="form-control" name="prebid"/>
+                                    <input type="text" class="form-control" name="prebid"/>
+
+                                <!-- Button trigger modal -->
+                                  {{-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                      {{ __('Add prebid') }}
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add prebid details</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            ...
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div> --}}
+                                    
                                 </div>
                         </div>
                 </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePageListsTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreatePageListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_lists', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('pagetitle');
-            $table->string('articlelist');
-            $table->string('status');
-            $table->string('prebid');
+            $table->unsignedBigInteger('page_list_id');
+            $table->unsignedBigInteger('page_list_tag_id');
+
+            // $table->foreign('page_list_id')->references('id')->on('page_lists');
+            // $table->foreign('page_list_tag_id')->references('id')->on('page_list_tags');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreatePageListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_lists');
+        Schema::dropIfExists('tags');
     }
 }

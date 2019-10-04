@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PageList;
-
+use App\PageListTag;
+use App\Tag;
 
 class PageListController extends Controller
 {
@@ -15,10 +16,14 @@ class PageListController extends Controller
      */
     public function index()
     {
+        $tags = PageListTag::all();
         $pages = PageList::all();
+        $pages->map(function($page) {
+            $page->tags = Tag::where('page_list_id', $page->id)->get();
+        });
 
         // return view('pages.index', compact('pages'));
-        return view('pages.index',['pages' => $pages]);
+        return view('pages.index', compact('pages', 'tags'));
     }
 
     /**
@@ -28,7 +33,11 @@ class PageListController extends Controller
      */
     public function create()
     {
-        return view('pages.create');
+        $pages = PageList::all();
+        $tags = PageListTag::all();
+
+        // $pages->tags()->sync($request->tags
+        return view('pages.create', ['pages' => $pages, 'tags' => $tags]);
     }
 
     /**
@@ -41,24 +50,22 @@ class PageListController extends Controller
     public function store(Request $request)
     {
 
-        $pages =new PageList([
+        $page = PageList::create([
             'pagetitle' => $request->get('pagetitle'),
             'articlelist' => $request->get('articlelist'),
-            'tags' => $request->get('tags'),
             'status' => $request->get('status'),
             'prebid' => $request->get('prebid'),
         ]);
-        // dd($pages);
-        dd($request->get('tags'));
-        $pages->save();
-
-        $tags =explode(',', $request->tags);
-        // dd($tags);
-  
-        $pages->tag($tags);
-        // var_dump($tags =explode(',', $request->tags));
-        $pages->save();
         
+        if ($page && count($request->tags) > 0) {
+            $tags = $request->tags;
+            foreach ($tags as $tag_id) {
+                Tag::create([
+                    'page_list_id' => $page->id,
+                    'page_list_tag_id' => $tag_id
+                ]);
+            }
+        }
 
         return redirect('/pages')->with('success', 'data saved!');
     }
@@ -98,11 +105,11 @@ class PageListController extends Controller
         $pages = PageList::find($id);
         $pages->pagetitle =  $request->get('pagetitle');
         $pages->articlelist = $request->get('articlelist');
-        $pages->tags = $request->get('tags');
         $pages->status = $request->get('status');
-        $pages->prebid= $request->get('prebid');
+
         $pages->save();
 
+        
         return redirect('/pages')->with('success', 'pages updated!');
     }
 

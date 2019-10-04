@@ -9,10 +9,15 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material') }}/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('material') }}/img/favicon.png">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
     <!-- CSS Files -->
+    {{-- <link href="{{ asset('material') }}/css/select.css" rel="stylesheet" /> --}}
     <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" />
@@ -96,8 +101,9 @@
             </ul>
           </div>
         </div>
+
         <!--   Core JS Files   -->
-        <script src="{{ asset('material') }}/js/core/jquery.min.js"></script>
+        {{-- <script src="{{ asset('material') }}/js/core/jquery.min.js"></script> --}}
         <script src="{{ asset('material') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('material') }}/js/core/bootstrap-material-design.min.js"></script>
         <script src="{{ asset('material') }}/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -140,6 +146,124 @@
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
         <script src="{{ asset('material') }}/demo/demo.js"></script>
         <script src="{{ asset('material') }}/js/settings.js"></script>
+
+        
         @stack('js')
+
+
+        <script>
+            $(document).ready(function() {
+  
+              console.log('loaded');
+  
+                $('.js-example-basic-multiple').select2();
+                // $('.js-example-basic-multiple').select2().val({ json.encode( $page->tags()->getRelatedIds() ) });
+               
+              });
+          </script>
+
+<script type="text/javascript">
+  if ( "function" === typeof(adSetSyncDelay) ) {
+    adSetSyncDelay('125');
+  }
+</script>
+<div id="ad_right_rail_flex" class="ad_wrapper_top">
+    <div class="adtech-adspot ad-right_rail_flex" id="adsDiv1">
+        <div id="divAd" class="RetubeAd" style="min-height:300px;"></div>
+        <style>
+            .vid {
+                height: 250px;
+                width: 300px;
+            }
+
+        </style>
+        <!-- Sentient Ad Code -->
+        <script>
+            //REFERENCE RETUBE SDK
+            (function () {
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.retube.tv/sdk/sdk.js';
+                var entry = document.getElementsByTagName('script')[0];
+                entry.parentNode.insertBefore(script, entry);
+            })();
+
+            //FUNCTION TO PARSE QUERY STRING PARAMS:
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+
+            //FUNCTION TO SHOW RETUBE AD:
+            function showRetube(adId, respId) {
+                retubeSDK_ready.push(function () {
+                    retubeSDK.init(function () {
+                        retubeSDK.productWidget({
+                            apiKey: '1111111',
+                            targetDivClassName: 'RetubeAd',
+                            width: '300px',
+                            height: '250px',
+                            expandWidth: '600px',
+                            expandHeight: '500px',
+                            expandOn: 'hover',
+                            expandDirection: 'SW',
+                            onHover: ['unmute', 'expand', 'play'],
+                            onOut: ['shrink'],
+                            //onScrollIn: ['mute', 'expand'],
+                            onScrollOut: ['mute', 'shrink'],
+                            projectId: adId,
+                            sessionId: respId,
+                            muted: 1,
+                            autoplay: 1,
+                            // startTime: 0,
+                            hidden: 0,
+                            // playerType: '7',
+                            onVideoEnd: 'loop',
+                            playerSkin: {
+                                play: 'NW',
+                                // time: 'NW',
+                                mute: 'NE',
+                                slider: 'N'
+                                // volume: 'NE',
+                                // fullscreen: 'NE',
+                            }
+                        });
+
+                        retubeSDK.listen('retubeEvent', function (data) {
+                            console.log(data);
+                        })
+                    });
+
+                });
+            }
+
+            //SHOW AD BASED ON PARAMETER:
+            var retubeSDK_ready = retubeSDK_ready || [];
+            switch (getParameterByName("ad")) {
+                case "rvw":
+                    showRetube('5a255e3d2dbad91900395885', getParameterByName("RespId"));
+                    break;
+                case "rcc":
+                    showRetube('5a23d6f02863a1180000c191', getParameterByName("RespId"));
+                    break;
+                case "vw":
+                    showRetube('5a39492c2909f41800cd44e0', getParameterByName("RespId"));
+                    break;
+                case "cc":
+                    showRetube('5a3948fe2909f41800cd44df', getParameterByName("RespId"));
+                    break;
+                case "ap":
+                    showRetube('yUd0EvRuDvGbekAJNIwx', getParameterByName("RespId"));
+                    break;
+            }
+
+            //----------------
+
+        </script>
     </body>
 </html>

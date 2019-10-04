@@ -18,12 +18,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('pages', 'PageListController');
+Route::resource('tags', 'TagController');
+
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('table-list', function () {
 		return view('pages.index');
 	})->name('table');
 
+	
 	Route::get('typography', function () {
 		return view('pages.typography');
 	})->name('typography');

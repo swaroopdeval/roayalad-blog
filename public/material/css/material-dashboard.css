@@ -18847,15 +18847,31 @@ Copyright (c) 2015 Daniel Eden
 }
 
 @media screen and (max-width: 991px) {
-  .navbar .navbar-collapse .navbar-nav {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
+      .navbar .navbar-collapse .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
 }
 
-
-/*# sourceMappingURL=dashboard-free.css.map */
+/*Custom css */
+.page_tag{
+  border: 1px solid #ccc;
+  margin: 0 5px 5px 0;
+  cursor: unset;
+    font-size: 12px;
+    padding: 6px;
+    border-radius: 3px;
+    color: #464646;
+    line-height: 1;
+}
+.video__tags button {
+    border: none;
+    background-color: transparent;
+    padding: 0 5px;
+    transition: 0.05s ease-in-out all;
+}
