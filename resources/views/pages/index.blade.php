@@ -68,6 +68,9 @@
                                   <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal{{$page->id}}">
                                     {{ __('view tags') }}
                                   </button>
+
+                               
+                                  
                                       <!-- Modal -->
                                      
                                         <div class="modal fade" id="exampleModal{{$page->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,10 +96,10 @@
                                                       @foreach ($page->tags as $tag)
                                                         <tr>
                                                             <td>
-                                                              {{ $tag->tag->id }}
+                                                              {{ isset($tag->tag) ? $tag->tag->id : '' }}
                                                             </td>
                                                             <td>
-                                                              {{ $tag->tag->name }}
+                                                              {{ isset($tag->tag) ? $tag->tag->name : '' }}
                                                             </td>
                                                         </tr>
                                                         @endforeach
@@ -114,7 +117,57 @@
                               
                         </div>
                       </td>
+                      <td class="text-primary">
+                        {{$page->status}}
+                      </td>
+                      <td class="td-actions">
+                            <form action="{{ route('pages.destroy', $page->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                
+                                    <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('pages.edit', $page->id) }}" data-original-title="" title="">
+                                      <i class="material-icons">edit</i>
+                                      <div class="ripple-container"></div>
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-link" data-original-title="" title="" onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">
+                                        <i class="material-icons">close</i>
+                                        <div class="ripple-container"></div>
+                                    </button>
+                                </form> 
+                      
+                      </td>
+                      <td>
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal">
+                                    {{ __('Add prebid') }}
+                                  </button>
+                                  
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              ...
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                      </td>
+          
                   </tr>
+
+
+                  
                   @endforeach
                 </tbody>
               </table>

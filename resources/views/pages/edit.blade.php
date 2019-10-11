@@ -39,18 +39,18 @@
                                     </div>
                         </div>
                 </div>
-
                 
                 <div class="row">
                         <label class="col-sm-2 col-form-label">{{ __('Tags') }}</label>
                         <div class="col-sm-7">
-                                <div class="form-group">    
+                                <div class="form-group">
+                              
                                   <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
-
                                     @foreach ($tags as $tag)
-                                      @foreach ($pages->tags as $pageTag) 
-                                        <option value="{{ $tag->id }}" @if ($pageTag->tag->id === $tag->id) selected="selected" @endif>{{$tag->name}}</option>
-                                      @endforeach
+                                     
+                                   
+                                       <option value="{{ $tag->id }}"  selected="selected">{{$tag->name}}</option>
+                                    
                                     @endforeach
                                 </select>
 

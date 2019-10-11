@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageListTag extends Model
 {
-    // public function pagelist()
-    // {
-    // 	return $this->belongsToMany('App\PageList');
-    // }
+    public function pagelist()
+    {
+    	return $this->hasOne('App\PageList');
+    }
 }
