@@ -10,12 +10,12 @@ class PageList extends Model
         'pagetitle',
         'articlelist',
         'status',
-        'prebid',      
+        'prebid',   
     ];
 
-    // protected $with = ['tags'];
+    protected $with = ['tags'];
 
-    // public function tags(){
-    //     return $this->hasMany('App\Tag');
-    // }
+    public function tags(){
+        return $this->hasMany('App\Tag');
+    }
 }

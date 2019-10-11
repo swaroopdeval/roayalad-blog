@@ -8,6 +8,6 @@ class PageListTag extends Model
 {
     // public function pagelist()
     // {
-    //     return $this->belongsTo('App\PageList');
+    // 	return $this->belongsToMany('App\PageList');
     // }
 }

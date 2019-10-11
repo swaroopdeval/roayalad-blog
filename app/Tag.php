@@ -14,4 +14,5 @@ class Tag extends Model
     {
         return $this->belongsTo('App\PageListTag', 'page_list_tag_id', 'id');
     }    
+ 
 }

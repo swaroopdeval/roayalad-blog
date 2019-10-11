@@ -45,9 +45,17 @@
                         <label class="col-sm-2 col-form-label">{{ __('Tags') }}</label>
                         <div class="col-sm-7">
                                 <div class="form-group">    
+                                  <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
 
-                                        <input type="text" class="form-control" name="tags" value="{{$pages->tags}}"/>
-                                    </div>
+                                    @foreach ($tags as $tag)
+                                      @foreach ($pages->tags as $pageTag) 
+                                        <option value="{{ $tag->id }}" @if ($pageTag->tag->id === $tag->id) selected="selected" @endif>{{$tag->name}}</option>
+                                      @endforeach
+                                    @endforeach
+                                </select>
+
+                                  
+                                </div>
                         </div>
                 </div>
 
@@ -84,4 +92,16 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('script')
+
+{!! Html::script('js/select2.js') !!}
+
+<script type="text/javascript">
+
+    $('.js-example-basic-multiple').select2();
+    
+
+</script>
 @endsection

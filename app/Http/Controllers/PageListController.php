@@ -90,7 +90,15 @@ class PageListController extends Controller
     public function edit($id)
     {
         $pages = PageList::find($id);
-        return view('pages.edit', compact('pages')); 
+        $tags =PageListTag::all();
+// dd($pages, $tags);
+        // $tags2 =array();
+        // foreach ($tags as $tag) {
+        //     $tags2[$tag->id] =$tag->name;
+        // }
+
+        // return view('pages.edit')->with($pages)->withTags($tags2); 
+        return view('pages.edit', ['pages' => $pages, 'tags' => $tags]);
     }
 
     /**
@@ -108,8 +116,12 @@ class PageListController extends Controller
         $pages->status = $request->get('status');
 
         $pages->save();
-
-        
+    //    dd($pages->tags());
+       
+        $pages->tags()->saveMany([
+            new Tag(),
+            new Tag(),
+        ]);
         return redirect('/pages')->with('success', 'pages updated!');
     }
 
