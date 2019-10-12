@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
-use App\PageList;
 
 class TagController extends Controller
 {
-    
-    /**
+
+     /**
      * Class constructor.
      */
-    public function __construct(){
-        $this->middleware('auth');
+    public function __construct()
+    {
+        $this-> middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -23,8 +23,8 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        $pages = PageList::all();
-        return view('pages.index', compact('tags', 'pages'));
+
+        return view('tags.index')->withTgas($tags);
     }
 
     /**
@@ -34,7 +34,9 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+         $tag = Tag:: all();
+
+         return viwe('/tags.create', compact('tag'));
     }
 
     /**
@@ -45,12 +47,12 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($reguest, array('name'=>'required|max:255'));
+        $this->validate($request, array('name' =>'requared|max:255'));
         $tag = new Tag;
-        $tag->name = $request->name;
+        $tag->name =$request->name;
         $tag->save();
-        $request->session()->flash('succes', 'Tag was successful created!');
-        return redirect()->route('pages.index');
+
+        return redirect("/tags.index")->with("success", "Tag succesfully added");
     }
 
     /**
@@ -72,7 +74,9 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag =Tag::find($id);
+    
+        return view("/tags.edit", compact('tag'));
     }
 
     /**
@@ -84,7 +88,12 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tag = Post::find($id);
+        // $post->$request = $request->get('title');
+        $tag->name = $request->get('name');
+        $tag->save();
+
+        return redirect("/tags")->with("success", "Data updated");
     }
 
     /**
@@ -95,6 +104,9 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag->delete();
+
+        return redirect("/tags")->with("success", "data deleted");
     }
 }

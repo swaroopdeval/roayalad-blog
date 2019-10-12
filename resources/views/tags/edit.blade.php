@@ -5,13 +5,14 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('tags.store') }}" autocomplete="off" class="form-horizontal">
+    
+          <form method="post" action="{{ route('tags.update', $tag->id) }}" class="form-horizontal">
             @csrf
-            @method('post')
+            @method('PATCH') 
 
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Add Page Details') }}</h4>
+                <h4 class="card-title">{{ __('Edit Page Details') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body ">
@@ -21,17 +22,18 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __(' Title') }}</label>
                   <div class="col-sm-7">
                         <div class="form-group">    
-                                <input type="text" class="form-control" name="title"/>
+                    
+                        <input type="text" class="form-control" name="title" value="{{$tag->name}}"/>
                         </div>
                   </div>
                 </div>
-     
+            
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Add UPage') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
               </div>
             </div>
           </form>
@@ -40,4 +42,3 @@
     </div>
   </div>
 @endsection
-

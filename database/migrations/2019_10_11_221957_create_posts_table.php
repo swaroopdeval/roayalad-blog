@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePageslist extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreatePageslist extends Migration
      */
     public function up()
     {
-        Schema::create('pageslist', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('pagetitle');
-            $table->string('articlelist');
-            $table->string('tags');
-            $table->string('status');
-            $table->string('prebid');
+            $table->string('title');
             $table->timestamps();
-
         });
     }
 
@@ -32,6 +27,6 @@ class CreatePageslist extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pageslist');
+        Schema::dropIfExists('posts');
     }
 }
