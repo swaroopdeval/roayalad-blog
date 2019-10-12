@@ -30,6 +30,23 @@
                         </div>
                   </div>
                 </div>
+
+                <div class="row">
+                    <label class="col-sm-2 col-form-label">{{ __('Tags') }}</label>
+                    <div class="col-sm-7">
+                          <div class="form-group">    
+                              <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                
+                                  @foreach ($tags as $tag)
+
+                                <option value="{{ $tag->id }}">{{$tag->name}}</option>
+                                
+                                @endforeach
+                              </select>
+                          </div>
+                    </div>
+                </div>
+
             
               </div>
               <div class="card-footer ml-auto mr-auto">
@@ -45,12 +62,10 @@
 
 @section('script')
 
-{!! Html::script('js/select2.js') !!}
-
 <script type="text/javascript">
-
+   
     $('.js-example-basic-multiple').select2();
-    
-
+    $('.js-example-basic-multiple').select2().val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
+  
 </script>
 @endsection

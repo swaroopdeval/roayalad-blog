@@ -150,13 +150,14 @@
         
         @stack('js')
 
-
+        @yield('script')
         <script>
             $(document).ready(function() {
   
               console.log('loaded');
   
                 $('.js-example-basic-multiple').select2();
+      
           
               });
           </script>

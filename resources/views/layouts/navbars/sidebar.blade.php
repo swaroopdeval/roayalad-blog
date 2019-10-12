@@ -80,6 +80,25 @@
             </ul>
           </div>
         </li>
+
+        <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+          <a class="nav-link" data-toggle="collapse" href="#taglist" aria-expanded="true">
+            <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
+            <p>{{ __('Tag Settings') }}
+              <b class="caret"></b>
+            </p>
+          </a>
+          <div class="collapse show" id="taglist">
+            <ul class="nav">
+              <li class="nav-item {{ $activePage == 'table' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('tags.index') }}">
+                  <span class="sidebar-mini"> AT </span>
+                  <span class="sidebar-normal">{{ __('All Tags ') }} </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
    
     </ul>
   </div>

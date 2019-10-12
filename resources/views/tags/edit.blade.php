@@ -12,7 +12,7 @@
 
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Edit Page Details') }}</h4>
+                <h4 class="card-title">{{ __('Edit Tag Details') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body ">
@@ -22,16 +22,34 @@
                   </div>
                 </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __(' Title') }}</label>
+                  <label class="col-sm-2 col-form-label">{{ __(' Name') }}</label>
                   <div class="col-sm-7">
                         <div class="form-group">    
                     
-                        <input type="text" class="form-control" name="title" value="{{$tag->name}}"/>
+                        <input type="text" class="form-control" name="name" value="{{$tag->name}}"/>
                         </div>
                   </div>
                 </div>
+
+                <div class="row">
+                        <label class="col-sm-2 col-form-label">{{ __('Tags') }}</label>
+                        <div class="col-sm-7">
+                              <div class="form-group">    
+                                  <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
+                                    
+                                      @foreach ($tags as $tag)
+    
+                                    <option value="{{ $tag->id }}">{{$tag->name}}</option>
+                                    
+                                    @endforeach
+                                  </select>
+                              </div>
+                        </div>
+                    </div>
             
-              </div>
+                </div>
+
+
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
               </div>
@@ -42,3 +60,4 @@
     </div>
   </div>
 @endsection
+

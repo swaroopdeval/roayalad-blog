@@ -62,7 +62,7 @@
                                
                                   
                                       <!-- Modal -->
-{{--                                      
+                                     
                                     <div class="modal fade" id="exampleModal{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
@@ -83,13 +83,14 @@
                                                       </th>
                                                     </thead>
                                                     <tbody>
+                                                      {{-- {{dd($post->tags)}} --}}
                                                       @foreach ($post->tags as $tag)
                                                         <tr>
                                                             <td>
-                                                              {{ isset($tag->tag) ? $tag->tag->id : '' }}
+                                                           {{$tag->id}}
                                                             </td>
                                                             <td>
-                                                              {{ isset($tag->tag) ? $tag->tag->name : '' }}
+                                                             {{$tag->name}}
                                                             </td>
                                                         </tr>
                                                         @endforeach
@@ -105,7 +106,7 @@
                                         </div>
                                       </div>
                               
-                                    </div> --}}
+                                    </div>
                       </td>
                       <td class="td-actions">
                             <form action="{{ route('posts.destroy', $post->id) }}" method="post">

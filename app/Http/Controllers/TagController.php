@@ -23,8 +23,8 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-
-        return view('tags.index')->withTgas($tags);
+        return view('/tags.index')->withTags($tags);
+        
     }
 
     /**
@@ -34,9 +34,8 @@ class TagController extends Controller
      */
     public function create()
     {
-         $tag = Tag:: all();
-
-         return viwe('/tags.create', compact('tag'));
+         $tag = Tag::all();
+         return view('/tags.create', compact('tag'));
     }
 
     /**
@@ -45,14 +44,19 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
-        $this->validate($request, array('name' =>'requared|max:255'));
-        $tag = new Tag;
-        $tag->name =$request->name;
-        $tag->save();
+    
+        
+         $tag= Tag::create([
+            'name' => $request->get('name'),
+        ]);
 
-        return redirect("/tags.index")->with("success", "Tag succesfully added");
+
+         $tag->save();
+         return redirect("/tags")->with("sucess", "data saved");
     }
 
     /**
@@ -88,8 +92,8 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tag = Post::find($id);
-        // $post->$request = $request->get('title');
+        // dd($request);
+        $tag = Tag::find($id);
         $tag->name = $request->get('name');
         $tag->save();
 

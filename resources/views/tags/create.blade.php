@@ -11,7 +11,7 @@
 
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Add Page Details') }}</h4>
+                <h4 class="card-title">{{ __('Add Tag') }}</h4>
                 <p class="card-category"></p>
               </div>
               <div class="card-body ">
@@ -24,14 +24,14 @@
                   <label class="col-sm-2 col-form-label">{{ __('Title') }}</label>
                   <div class="col-sm-7">
                         <div class="form-group">    
-                                <input type="text" class="form-control" name="title"/>
+                                <input type="text" class="form-control" name="name"/>
                         </div>
                   </div>
                 </div>
      
               </div>
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Add UPage') }}</button>
+                <button type="submit" class="btn btn-primary">{{ __('Add Tag') }}</button>
               </div>
             </div>
           </form>
