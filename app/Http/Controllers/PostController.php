@@ -57,7 +57,17 @@ class PostController extends Controller
          $post->save();
 
          $post->tags()->sync($request->tags, false);
+
          return redirect("/posts")->with("sucess", "data saved");
+    }
+
+    public function show($id)
+    {
+        //ger posts
+        $post =Post::find($id);
+        $tags =Tag::all();
+
+        return view('posts.show', ['post' => $post, 'tags' => $tags]);
     }
 
     public function edit($id)

@@ -52,9 +52,9 @@
           <div class="collapse show" id="pageslist">
             <ul class="nav">
               <li class="nav-item {{ $activePage == 'table' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('posts.index') }}">
-                  <span class="sidebar-mini"> APL </span>
-                  <span class="sidebar-normal">{{ __('All P List') }} </span>
+                <a class="nav-link" href="{{ route('pages.index') }}">
+                  <span class="sidebar-mini"> AP </span>
+                  <span class="sidebar-normal">{{ __('All Pages') }} </span>
                 </a>
               </li>
             </ul>

@@ -7,12 +7,12 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Post list</h4>
-            <p class="card-category">Here you can manage posts</p>
+            <h4 class="card-title ">Page list</h4>
+            <p class="card-category">Here you can manage pages</p>
           </div>
           <div class="row">
             <div class="col-12 text-right">
-              <a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary">Add page</a>
+              <a href="{{ route('pages.create') }}" class="btn btn-sm btn-primary">Add page</a>
             </div>
           </div>
           <div class="col-sm-12">
@@ -31,31 +31,42 @@
                     ID
                   </th>
                   <th>
-                    Title
+                    Name
+                  </th>
+                  <th>
+                  Articles
                   </th>
                   <th>
                     Tags
                   </th>
                   <th>
+                    Status
+                  </th>
+                  <th>
                     Action
+                  </th>
+                  <th>
+                    Prebid
                   </th>
                 </thead>
                 <tbody>
-                  @foreach ($posts as $post)
+                    {{-- {{dd($pages)}} --}}
+                  @foreach ($pages as $page)
                   
                   <tr>
                       <td>
-                        {{$post->id}}
+                     {{$page->id}}
                       </td>
                       <td>
-                        <a href="{{ route('posts.show', $post->id) }}">  {{$post->title}}</a>
+                        <a href="{{ route('pages.show', $page->id) }}">  {{$page->title}}</a>
                       </td>
-                      
-                   
+                      <td>
+                        {{$page->articles}}
+                      </td>
                       <td>
                    
 
-                                  <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal{{$post->id}}">
+                                  <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal{{$page->id}}">
                                     {{ __('view tags') }}
                                   </button>
 
@@ -63,7 +74,7 @@
                                   
                                       <!-- Modal -->
                                      
-                                    <div class="modal fade" id="exampleModal{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal{{$page->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
                                             <div class="modal-header">
@@ -83,17 +94,16 @@
                                                       </th>
                                                     </thead>
                                                     <tbody>
-                                                      {{-- {{dd($post->tags)}} --}}
-                                                      @foreach ($post->tags as $tag)
-                                                        <tr>
-                                                            <td>
-                                                           {{$tag->id}}
-                                                            </td>
-                                                            <td>
-                                                             {{$tag->name}}
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
+                                                            @foreach ($page->tags as $tag)
+                                                            <tr>
+                                                                <td>
+                                                               {{$tag->id}}
+                                                                </td>
+                                                                <td>
+                                                                 {{$tag->name}}
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
                   
                                                     </tbody>
                                                   </table>
@@ -104,16 +114,17 @@
                                             </div>
                                           </div>
                                         </div>
-                                      </div>
-                              
-                                    </div>
+                                    </div>      
+                      </td>
+                      <td class="text-primary">
+                        {{$page->status}}
                       </td>
                       <td class="td-actions">
-                            <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                            <form action="{{ route('pages.destroy', $page->id) }}" method="post">
                                     @csrf
                                     @method('delete')
                                 
-                                    <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('posts.edit', $post->id) }}" data-original-title="" title="">
+                                    <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('pages.edit', $page->id) }}" data-original-title="" title="">
                                       <i class="material-icons">edit</i>
                                       <div class="ripple-container"></div>
                                     </a>
@@ -124,7 +135,38 @@
                                 </form> 
                       
                       </td>
-                      </tr>
+                      <td>
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal">
+                                    {{ __('view prebid') }}
+                                  </button>
+                                  
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              ...
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                      </td>
+          
+                  </tr>
+
+
+                  
                   @endforeach
                 </tbody>
               </table>
