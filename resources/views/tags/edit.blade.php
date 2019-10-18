@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'user-management', 'titlePage' => __('User Management')])
+@extends('layouts.app', ['activePage' => 'user-management', 'titlePage' => __('Tags Management')])
 
 @section('content')
   <div class="content">
@@ -31,21 +31,14 @@
                   </div>
                 </div>
 
-                <div class="row">
-                        <label class="col-sm-2 col-form-label">{{ __('Tags') }}</label>
-                        <div class="col-sm-7">
-                              <div class="form-group">    
-                                  <select class="js-example-basic-multiple form-control" name="tags[]" multiple="multiple">
-                                    
-                                      @foreach ($tags as $tag)
-    
-                                    <option value="{{ $tag->id }}">{{$tag->name}}</option>
-                                    
-                                    @endforeach
-                                  </select>
-                              </div>
-                        </div>
+                {{-- <div class="row">
+                    <label class="col-sm-2 col-form-label">{{ __('Tags') }}</label>
+                    <div class="col-sm-7">
+                          <div class="form-group">    
+                              <input type="text" class="form-control" name="name" value="{{$tag->name}}"/>
+                          </div>
                     </div>
+                </div> --}}
             
                 </div>
 
@@ -60,4 +53,3 @@
     </div>
   </div>
 @endsection
-

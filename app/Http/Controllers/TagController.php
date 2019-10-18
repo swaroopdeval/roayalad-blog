@@ -78,11 +78,12 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag =Tag::find($id);
-    
-        return view("/tags.edit", compact('tag'));
+        $tag = Tag::find($id);
+        return view('/tags.edit', compact('tag'));
     }
 
+
+ 
     /**
      * Update the specified resource in storage.
      *

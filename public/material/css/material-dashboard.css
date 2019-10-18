@@ -18875,3 +18875,73 @@ Copyright (c) 2015 Daniel Eden
     padding: 0 5px;
     transition: 0.05s ease-in-out all;
 }
+
+
+.myForm{
+  /* background-color: rgb(156, 39, 176) !important; */
+  padding: 15px !important;
+  border-radius: 15px !important;
+  color: #000;
+
+}
+
+input{
+  border-radius:0 15px 15px 0 !important;
+
+}
+
+.br-15{
+  border-radius: 15px 0 0 15px !important;
+}
+
+#add_more{
+  color: white !important;
+  border-radius: 15px !important;
+  border: 0 !important;
+
+}
+#remove-more{
+  color: white !important;
+  border-radius: 15px !important;
+  border: 0 !important;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3px;
+  height: 23px;
+  align-self: center;
+  margin: 0px auto;
+  margin-top: 12px;
+
+}
+#add_more_input{
+  color: white !important;
+  background-color: #fa8231 !important;
+  border-radius: 15px !important;
+  border: 0 !important;
+
+}
+.add_more_input, .more_input{
+  color: white !important;
+  background-color: #fa8231 !important;
+  border-radius: 15px !important;
+  border: 0 !important;
+}
+#remove_more{
+  color: white !important;
+  background-color: red !important;
+  border-radius: 15px !important;
+  border: 0 !important;
+  display: none;
+
+}
+  
+.submit_btn{
+  border-radius: 15px !important;
+ background-color: #95c714 !important;
+ border: 0 !important;
+}
+textarea:focus, input:focus{
+  outline: none;
+}

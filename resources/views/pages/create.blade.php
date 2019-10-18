@@ -67,6 +67,55 @@
                     </div>
                 </div>
      
+                
+                {{-- <div class="row">
+                    <label class="col-sm-2 col-form-label">{{ __('Prebids') }}</label>
+                    <div class="col-sm-7">
+                          <div class="form-group">    
+                                <i class="fa fa-plus-circle" style="color:#a13bb6; font-size:35px; cursor:pointer"></i>
+                          </div>
+                    </div>
+            </div> --}}
+
+
+
+            <dvi class="container h-100">
+                <div class="d-flex justify-content-center">
+                  <div class="card mt-5 col-md-12 animated bounceInDown myForm" id="multiple-container">
+                    <div class="card-header">
+                      <h4>Bidders Information</h4>
+                    </div>
+                    <div class="card-body" id="add_info">
+                      <form>
+                        <div id="dynamic_container">
+                        <small id="bidder">Bidder 1</small>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text br-15"><i class="fa fa-tags"></i></span>
+                            </div>
+                            <input type="text" placeholder="Bidders Name" class="form-control"/>
+                          </div>
+                          <div class="input-group mt-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text br-15"><i class="fa fa-tags"></i></span>
+                            </div>
+                            <input type="text" placeholder="atribute name" id="field1" class="form-control"/>
+                            <input type="text" placeholder="atribute value" id="field2"  class="form-control"/>
+                            <a class="btn btn-secondary btn-sm moreinput_field" id="add_more_input">
+                            <i class="fa fa-plus-circle"></i> 
+                            </a>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="card-footer" id="card-footer">
+                      <a class="btn btn-success btn-sm" id="add_more"><i class="fa fa-plus-circle"></i> Add</a>
+                      {{-- <a class="btn btn-secondary btn-sm" id="remove_more"><i class="fa fa-trash-alt"></i> Remove</a> --}}
+                      <button class="btn btn-success btn-sm float-right submit_btn"><i class="fas fa-arrow-alt-circle-right"></i> Submit</button>
+                    </div>
+                  </div>
+                </div>
+                </dvi>
               </div>
               <div class="card-footer ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary">{{ __('Add Page') }}</button>
@@ -77,16 +126,4 @@
       </div>
     </div>
   </div>
-@endsection
-
-@section('script')
-<script>
-  $(document).ready(function() {
-
-    console.log('Create');
-
-      $('.js-example-basic-multiple').select2();
-      
-    });
-</script>
 @endsection
