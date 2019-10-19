@@ -14,4 +14,7 @@ class Page extends Model
     public function tags(){
         return $this->belongsToMany('App\Tag');
     }
+    public function prebids(){
+        return $this->belongsToMany('App\Prebids');
+    }
 }

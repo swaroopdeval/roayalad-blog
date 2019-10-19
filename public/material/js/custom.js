@@ -15,8 +15,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text br-15"><i class="fa fa-tags"></i></span>
                                     </div>
-                                    <input type="text" placeholder="atribute name" id="field${iteration}" class="form-control" />
-                                    <input type="text" placeholder="atribute value "id="field2" class="form-control" />
+                                    <input type="text" placeholder="atribute name" name="params_name[]" id="field${iteration}" class="form-control" />
+                                    <input type="text" placeholder="atribute value name="params_value[]" "id="field2" class="form-control" />
                                     <a class="btn btn-secondary btn-sm add_more_input" id="removeInput">
                                         <i class="fa fa-minus-circle"></i>
                                     </a>
@@ -46,14 +46,14 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text br-15"><i class="fa fa-tags"></i></span>
                             </div>
-                            <input type="text" placeholder="Bidders Name" class="form-control"/>
+                            <input type="text" placeholder="Bidders Name" name="bidders_name[]" class="form-control"/>
                           </div>
                           <div class="input-group mt-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text br-15"><i class="fa fa-tags"></i></span>
                             </div>
-                            <input type="text" placeholder="atribute name" id="field1" class="form-control"/>
-                            <input type="text" placeholder="atribute value" id="field2"  class="form-control"/>
+                            <input type="text" placeholder="atribute name" name="params_name[]" id="field1" class="form-control"/>
+                            <input type="text" placeholder="atribute value" name="params_value[]" id="field2"  class="form-control"/>
                             <a class="btn btn-secondary btn-sm more_input moreinput_field" id="add_more_input${id}">
                             <i class="fa fa-plus-circle"></i> 
                             </a>

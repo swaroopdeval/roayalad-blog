@@ -20,6 +20,9 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::resource('posts', 'PostController');
 Route::resource('tags', "TagController");
 Route::resource('pages', "PageController");
+Route::resource('prebids', "PrebidController");
+Route::resource('parameters', "ParameterController");
+
 
 
 

@@ -86,27 +86,25 @@
                       <h4>Bidders Information</h4>
                     </div>
                     <div class="card-body" id="add_info">
-                      <form>
                         <div id="dynamic_container">
                         <small id="bidder">Bidder 1</small>
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text br-15"><i class="fa fa-tags"></i></span>
                             </div>
-                            <input type="text" placeholder="Bidders Name" class="form-control"/>
+                            <input type="text" placeholder="Bidders Name" name="bidders_name[]" class="form-control"/>
                           </div>
                           <div class="input-group mt-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text br-15"><i class="fa fa-tags"></i></span>
                             </div>
-                            <input type="text" placeholder="atribute name" id="field1" class="form-control"/>
-                            <input type="text" placeholder="atribute value" id="field2"  class="form-control"/>
+                            <input type="text" placeholder="atribute name" nme="params_name[] " id="field1" class="form-control"/>
+                            <input type="text" placeholder="atribute value" name="params_value[]" id="field2"  class="form-control"/>
                             <a class="btn btn-secondary btn-sm moreinput_field" id="add_more_input">
                             <i class="fa fa-plus-circle"></i> 
                             </a>
                           </div>
                         </div>
-                      </form>
                     </div>
                     <div class="card-footer" id="card-footer">
                       <a class="btn btn-success btn-sm" id="add_more"><i class="fa fa-plus-circle"></i> Add</a>
