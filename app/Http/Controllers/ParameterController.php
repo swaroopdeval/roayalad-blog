@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Parameter;
 
 class ParameterController extends Controller
 {
@@ -13,7 +14,8 @@ class ParameterController extends Controller
      */
     public function index()
     {
-        //
+        $paramters=Parameter::all();
+        return view('parameters.index', compact('parameters'));
     }
 
     /**
@@ -34,7 +36,23 @@ class ParameterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $parameters = new Parameter;
+
+        // $parameters->params_name  = $request->input('params_name');
+        // $parameters->params_value = $request->input('params_name');
+        // $parameters->bidders_name = $request->input('bidders_name');
+
+        // $parameters->save();
+    
+        $record_count = count($request->input('params_name'));
+    
+        for($i=0; $i<$record_count; $i++) {
+            $parameters->params_name  = $request->input('params_name')[$i];
+            $parameters->params_value = $request->input('params_name')[$i];
+            $parameters->bidders_name = $request->input('bidders_name')[$i];
+            dd($parameters);
+            $parameters->save();
+        }
     }
 
     /**

@@ -74,11 +74,29 @@
 
 
 
-$(document).on('click', '#remove-more', function(){
- 
-  $(this).parent().prev().remove();
-  $(this).parent().remove()
+        $(document).on('click', '#remove-more', function(){
+        
+          $(this).parent().prev().remove();
+          $(this).parent().remove()
 
-})
+        })
+
+        $("#paramsForms").on('submit', function(e){
+            e.preventDefault();
+
+            $.ajax({
+              type:"POST",
+              url: "/parameters",
+              data: $("#paramsForms").serialize(),
+              success: function(response){
+                console.log(response)
+                alert('data saved');
+              },
+              error: function(error){
+                console.log(error)
+                alert('Data not saved');
+              }
+            })
+        })
  
 }())

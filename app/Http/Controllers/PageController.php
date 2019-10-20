@@ -63,13 +63,9 @@ class PageController extends Controller
             'status' => $request->get('status'),
         ]);
         
-        dd($request);
-        
+        //  dd($request);
+
         $page->save();
-
-        $page->tags()->sync($request->tags, false);
-        $page->prebids()->sync($request->prebids, false);
-
         return redirect("/pages")->with("sucess", "data saved");
     }
 
